@@ -1,0 +1,5 @@
+<html xmlns:th="http://www.thymeleaf.org"> <!--템플릿 엔진은 타임리프를 꼭 써야함! -->
+<body>
+<p th:text="'hello ' + ${name}">hello! empty</p> <!-- 여기서 hello empty라는 문장은 없어도 됨.
+근데 타임리프의 장점이 html을 그대로 서버없이 열어봐도 껍데기를 볼 수 있음. 근데 템플릿 엔진이 작동하면 p태그 안의 내용이 th에 있는 내용으로 치환됨. -->
+</body></html>

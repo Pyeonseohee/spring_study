@@ -3,6 +3,7 @@ package hello.hellospring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
@@ -13,6 +14,14 @@ public class HelloController {
         return "hello"; // resources/template 에 있는 hello.html 찾아감.
         // 뷰 리졸버(view resolver)가 화면을 찾아서 처리함
         // 즉, 거기 찾아가서 그 아이를 렌더링해라. 이 말임.
+    }
+
+    @GetMapping("hello-mvc")
+    public String helloMvc(@RequestParam(value = "name", required = true) String name, Model model){ //웹에서 파라미터 받을 것. -> @RequestParam.
+        // required는 기본값이 true이므로 무조건 매개변수를 넘겨야하는 형식.
+        // model에 담으면 View에서 렌더링할 때 쓰임.
+        model.addAttribute("name", name); // key와 value
+        return "hello-template";
     }
 
 }
