@@ -31,6 +31,24 @@ public class HelloController {
         // template와 다른 점: view가 없음(ViewResorver). 그냥 클라이언트에게 바로 내려감.
     }
 
+    @GetMapping("hello-api")
+    @ResponseBody
+    public Hello helloApi(@RequestParam("name") String name){
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello; // 객체 반환
+    }
+    //class 생성
+    static class Hello{
+        private String name;
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+
 
 
 }
