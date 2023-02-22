@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HelloController {
@@ -23,5 +24,13 @@ public class HelloController {
         model.addAttribute("name", name); // key와 value
         return "hello-template";
     }
+    @GetMapping("hello-string")
+    @ResponseBody //http의 바디부분. 그 바디 부분에다가 밑에 있는 함수의 return값을 바로 넣어주겠다.
+    public String helloString(@RequestParam("name") String name){
+        return "hello " + name;
+        // template와 다른 점: view가 없음(ViewResorver). 그냥 클라이언트에게 바로 내려감.
+    }
+
+
 
 }
