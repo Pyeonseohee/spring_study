@@ -32,4 +32,7 @@ public class MemoryMemberRepository implements MemberRepository{
         // stoer에 있는 모든 Member값 list로 변환하여 반환.
         return new ArrayList<>(store.values());
     }
+    public void  clearStore(){
+        store.clear();
+    }
 }
